@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data e Horário</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="tela">
+
+        <form class="card">
+
+            <h1 class="cabecalho">Data e horário</h1>
+
+            <div class="data-horario">
+
+                <p class="horarios-titulo">
+                    Escolha uma data
+                </p>
+
+                <input
+                    type="date"
+                    id="data"
+                    class="data"
+                >
+
+                <p class="horarios-titulo">
+                    Escolha um horário
+                </p>
+
+                <div class="horarios">
+
+                    <button type="button" class="horario">08:00</button>
+                    <button type="button" class="horario">08:30</button>
+                    <button type="button" class="horario">09:00</button>
+                    <button type="button" class="horario">09:30</button>
+                    <button type="button" class="horario">10:00</button>
+                    <button type="button" class="horario">10:30</button>
+                    <button type="button" class="horario">11:00</button>
+                    <button type="button" class="horario">11:30</button>
+                    <button type="button" class="horario">12:00</button>
+                    <button type="button" class="horario">12:30</button>
+                    <button type="button" class="horario">13:00</button>
+                    <button type="button" class="horario">13:30</button>
+                    <button type="button" class="horario">14:00</button>
+                    <button type="button" class="horario">14:30</button>
+                    <button type="button" class="horario">15:00</button>
+                    <button type="button" class="horario">15:30</button>
+                    <button type="button" class="horario">16:00</button>
+                    <button type="button" class="horario">16:30</button>
+                    <button type="button" class="horario">17:00</button>
+                    <button type="button" class="horario">17:30</button>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                id="continuar"
+                class="continuar">
+                Continuar
+            </button>
+
+            <button
+                type="button"
+                id="voltar"
+                class="btn-voltar">
+                Voltar
+            </button>
+
+            <p id="mensagem"></p>
+
+        </form>
+
+    </main>
+
+    <script>
+
+        const horarios = document.querySelectorAll(".horario");
+
+        const data = document.getElementById("data");
+
+        const continuar = document.getElementById("continuar");
+
+        const voltar = document.getElementById("voltar");
+
+        const mensagem = document.getElementById("mensagem");
+
+        let horarioSelecionado = null;
+
+
+        horarios.forEach(function(horario) {
+
+            horario.addEventListener("click", function() {
+
+                horarios.forEach(function(item) {
+                    item.classList.remove("selecionado");
+                });
+
+                horario.classList.add("selecionado");
+
+                horarioSelecionado = horario;
+
+            });
+
+        });
+
+
+        continuar.addEventListener("click", function() {
+
+            if (!data.value) {
+
+                mensagem.textContent = "Escolha uma data.";
+
+                return;
+            }
+
+            if (!horarioSelecionado) {
+
+                mensagem.textContent = "Escolha um horário.";
+
+                return;
+            }
+
+
+            const partes = data.value.split("-");
+
+            const dataFormatada =
+                partes[2] + "/" +
+                partes[1] + "/" +
+                partes[0];
+
+
+            sessionStorage.setItem(
+                "dataAgendamento",
+                dataFormatada
+            );
+
+
+            sessionStorage.setItem(
+                "horarioAgendamento",
+                horarioSelecionado.textContent.trim()
+            );
+
+
+            window.location.href = "confirmacao.html";
+
+        });
+
+
+        voltar.addEventListener("click", function() {
+
+            window.location.href = "servico.html";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
