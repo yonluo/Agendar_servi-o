@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaFácil</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+
+<body>
+
+    <!-- TELA 3 - CONFIRMAÇÃO -->
+    <section class="tela">
+        <div class="card">
+
+            <div class="cabecalho">
+                Revisar agendamento
+            </div>
+
+            <div class="dados">
+
+                <div class="campo">
+                    <span>Serviço:</span>
+                    <strong>Corte de cabelo</strong>
+                </div>
+
+                <div class="campo">
+                    <span>Data:</span>
+                    <strong>15/10/2026</strong>
+                </div>
+
+                <div class="campo">
+                    <span>Horário:</span>
+                    <strong>10:30</strong>
+                </div>
+
+                <div class="campo">
+                    <span>Nome:</span>
+                    <strong>Jana Raunira</strong>
+                </div>
+
+            </div>
+
+            <div class="botoes">
+                <button class="btn-editar">
+                    Voltar e editar
+                </button>
+
+                <button class="btn-confirmar" onclick="confirmarAgendamento()">
+                    Confirmar
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- TELA 4 - RESULTADO -->
+    <section class="tela tela-resultado" id="resultado">
+
+        <div class="card resultado-card">
+
+            <div class="icone-confirmacao">
+                ✓
+            </div>
+
+            <h1>Agendamento<br>confirmado!</h1>
+
+            <p class="protocolo">
+                Protocolo: <strong>PT1313</strong>
+            </p>
+
+            <button class="btn-agendamentos">
+                Ver agendamentos
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script>
+        function confirmarAgendamento() {
+            document.getElementById("resultado").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    </script>
+
+</body>
+</html>
